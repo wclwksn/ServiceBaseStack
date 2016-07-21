@@ -63,7 +63,7 @@ namespace Base.ST
             Plugins.Add(new AuthFeature(
                 () => new CustomUserSession(), //Use your own typed Custom UserSession type
                 new IAuthProvider[] {             //HTML Form post of UserName/Password credentials    
-                    new CustomCredentialsAuthProvider(),
+                    new CustomCredentialsAuthProvider() {  SessionExpiry =TimeSpan.FromMinutes(15)},
                     new BasicAuthProvider(),                    //Sign-in with Basic Auth 
                     new OpenIdOAuthProvider(appSettings)      //Sign-in with Custom OpenId
                 }));  

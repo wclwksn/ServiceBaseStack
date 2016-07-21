@@ -23,6 +23,7 @@ namespace Base.ST
             var session = (CustomUserSession)authService.GetSession(false);
             session.UserAuthId = "2";
             session.IsAuthenticated = true;
+          
 
             // add roles 
             session.Roles = new List<string>();
