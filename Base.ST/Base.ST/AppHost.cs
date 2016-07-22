@@ -25,18 +25,13 @@ namespace Base.ST
         public static AppConfig _appConfig;
 
         public override void Configure(Container container)
-        {
-            //Set JSON web services to return idiomatic JSON camelCase properties
+        {  
             JsConfig.EmitCamelCaseNames = true;
             var appSettings = new AppSettings();
-            _appConfig = new AppConfig(appSettings);
-
-            //Register a external dependency-free 
-            container.Register<ICacheClient>(new MemoryCacheClient());
-            //Configure an alt. distributed persistent cache that survives AppDomain restarts. e.g Redis
+            _appConfig = new AppConfig(appSettings); 
+            container.Register<ICacheClient>(new MemoryCacheClient()); 
             //container.Register<IRedisClientsManager>(c => new PooledRedisClientManager("localhost:6379"));
-
-            //Enable Authentication an Registration
+             
             ConfigureAuth(container, appSettings);
 
             //Change the default ServiceStack configuration
@@ -52,8 +47,7 @@ namespace Base.ST
 
         private void ConfigureAuth(Funq.Container container, IAppSettings appSettings)
         {
-            //Enable and register existing services you want this host to make use of.
-            //Look in Web.config for examples on how to configure your oauth providers, e.g. oauth.facebook.AppId, etc. 
+            //Enable and register existing services you want this host to make use of. 
             SetConfig(new HostConfig
             {
                 DebugMode = appSettings.Get("DebugMode", false),
@@ -63,7 +57,7 @@ namespace Base.ST
             Plugins.Add(new AuthFeature(
                 () => new CustomUserSession(), //Use your own typed Custom UserSession type
                 new IAuthProvider[] {             //HTML Form post of UserName/Password credentials    
-                    new CustomCredentialsAuthProvider() {  SessionExpiry =TimeSpan.FromMinutes(15)},
+                    new CustomCredentialsAuthProvider() {  SessionExpiry =TimeSpan.FromMinutes(10)},
                     new BasicAuthProvider(),                    //Sign-in with Basic Auth 
                     new OpenIdOAuthProvider(appSettings)      //Sign-in with Custom OpenId
                 }));  
@@ -78,18 +72,18 @@ namespace Base.ST
                 });
 
             //Store User Data into the referenced   database
-            container.Register<IUserAuthRepository>(c =>
-                new OrmLiteAuthRepository(c.Resolve<IDbConnectionFactory>())); //Use OrmLite DB Connection to persist the UserAuth and AuthProvider info
+            //container.Register<IUserAuthRepository>(c =>
+            //    new OrmLiteAuthRepository(c.Resolve<IDbConnectionFactory>())); //Use OrmLite DB Connection to persist the UserAuth and AuthProvider info
 
-            var authRepo = (OrmLiteAuthRepository)container.Resolve<IUserAuthRepository>(); //If using and RDBMS to persist UserAuth, we must create required tables
-            if (appSettings.Get("RecreateAuthTables", false))
-            {
-                authRepo.DropAndReCreateTables(); //Drop and re-create all Auth and registration tables
-            }
-            else
-            {
-                authRepo.InitSchema();   //Create only the missing tables
-            }
+            //var authRepo = (OrmLiteAuthRepository)container.Resolve<IUserAuthRepository>(); //If using and RDBMS to persist UserAuth, we must create required tables
+            //if (appSettings.Get("RecreateAuthTables", false))
+            //{
+            //    authRepo.DropAndReCreateTables(); //Drop and re-create all Auth and registration tables
+            //}
+            //else
+            //{
+            //    authRepo.InitSchema();   //Create only the missing tables
+            //}
 
             Plugins.Add(new RequestLogsFeature());
         }

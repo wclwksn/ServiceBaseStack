@@ -17,19 +17,18 @@ namespace Base.ST
         }
 
         public override bool TryAuthenticate(IServiceBase authService, string userName, string password)
-        {
+        { 
             //if (!Membership.ValidateUser(userName, password)) return false;
 
             var session = (CustomUserSession)authService.GetSession(false);
+            Console.Write(session.Id.ToString());
             session.UserAuthId = "2";
-            session.IsAuthenticated = true;
-          
+            session.IsAuthenticated = true; 
 
             // add roles 
             session.Roles = new List<string>();
             if (session.UserAuthId == "admin") session.Roles.Add(RoleNames.Admin);
-            session.Roles.Add("User");
-
+            session.Roles.Add("User"); 
 
             return true;
         }
@@ -37,16 +36,8 @@ namespace Base.ST
         public override IHttpResult OnAuthenticated(IServiceBase authService,
             IAuthSession session, IAuthTokens tokens,
             Dictionary<string, string> authInfo)
-        {
-            return base.OnAuthenticated(authService, session, tokens, authInfo);
-            //Fill IAuthSession with data you want to retrieve in the app eg:
-            //session.FirstName = "some_firstname_from_db";
-            //...
-             
-
-            //Alternatively avoid built-in behavior and explicitly save session with
-            //authService.SaveSession(session, SessionExpiry);
-            //return null;
+        { 
+             return base.OnAuthenticated(authService, session, tokens, authInfo);  
         }
 
        

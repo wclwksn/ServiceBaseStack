@@ -21,35 +21,34 @@ namespace Base.ST
 
         public override void OnAuthenticated(IServiceBase authService, IAuthSession session, IAuthTokens tokens, Dictionary<string, string> authInfo)
         {
-            base.OnAuthenticated(authService, session, tokens, authInfo);
+           // base.OnAuthenticated(authService, session, tokens, authInfo);
 
             //Populate all matching fields from this session to your own custom User table
             var user = session.ConvertTo<User>();
+            return;
             user.Id = int.Parse(session.UserAuthId);
-            user.GravatarImageUrl64 = !session.Email.IsNullOrEmpty()
-                ? CreateGravatarUrl(session.Email, 64)
-                : null;
+            
 
-            foreach (var authToken in session.ProviderOAuthAccess)
-            {
-                if (authToken.Provider == FacebookAuthProvider.Name)
-                {
-                    user.FacebookName = authToken.DisplayName;
-                    user.FacebookFirstName = authToken.FirstName;
-                    user.FacebookLastName = authToken.LastName;
-                    user.FacebookEmail = authToken.Email;
-                }
-                else if (authToken.Provider == TwitterAuthProvider.Name)
-                {
-                    user.TwitterName = user.DisplayName = authToken.UserName;
-                }
-                else if (authToken.Provider == YahooOpenIdOAuthProvider.Name)
-                {
-                    user.YahooUserId = authToken.UserId;
-                    user.YahooFullName = authToken.FullName;
-                    user.YahooEmail = authToken.Email;
-                }
-            }
+            //foreach (var authToken in session.ProviderOAuthAccess)
+            //{
+            //    if (authToken.Provider == FacebookAuthProvider.Name)
+            //    {
+            //        user.FacebookName = authToken.DisplayName;
+            //        user.FacebookFirstName = authToken.FirstName;
+            //        user.FacebookLastName = authToken.LastName;
+            //        user.FacebookEmail = authToken.Email;
+            //    }
+            //    else if (authToken.Provider == TwitterAuthProvider.Name)
+            //    {
+            //        user.TwitterName = user.DisplayName = authToken.UserName;
+            //    }
+            //    else if (authToken.Provider == YahooOpenIdOAuthProvider.Name)
+            //    {
+            //        user.YahooUserId = authToken.UserId;
+            //        user.YahooFullName = authToken.FullName;
+            //        user.YahooEmail = authToken.Email;
+            //    }
+            //}
 
             if (AppHost._appConfig.AdminUserNames.Contains(session.UserAuthName)
                 && !session.HasRole(RoleNames.Admin))
