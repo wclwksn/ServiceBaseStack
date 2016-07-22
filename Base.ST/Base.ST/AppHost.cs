@@ -32,9 +32,8 @@ namespace Base.ST
             container.Register<ICacheClient>(new MemoryCacheClient()); 
             //container.Register<IRedisClientsManager>(c => new PooledRedisClientManager("localhost:6379"));
              
-            ConfigureAuth(container, appSettings);
-
-            //Change the default ServiceStack configuration
+            this.ConfigureAuth(container, appSettings);
+             
             //const Feature disableFeatures = Feature.Jsv | Feature.Soap;
             SetConfig(new HostConfig
             {
@@ -55,12 +54,12 @@ namespace Base.ST
 
             //Register all Authentication methods you want to enable for this web app.            
             Plugins.Add(new AuthFeature(
-                () => new CustomUserSession(), //Use your own typed Custom UserSession type
-                new IAuthProvider[] {             //HTML Form post of UserName/Password credentials    
+                () => new CustomUserSession(),
+                new IAuthProvider[] {             
                     new CustomCredentialsAuthProvider() {  SessionExpiry =TimeSpan.FromMinutes(10)},
-                    new BasicAuthProvider(),                    //Sign-in with Basic Auth 
-                    new OpenIdOAuthProvider(appSettings)      //Sign-in with Custom OpenId
-                }));  
+                    new BasicAuthProvider(),                   
+                    new OpenIdOAuthProvider(appSettings)     
+                }));
 
             //Create a DB Factory configured to access the UserAuth PostgreSQL DB
             var connStr = appSettings.GetString("ConnectionString");
@@ -70,21 +69,6 @@ namespace Base.ST
                 {
                     //ConnectionFilter = x => new ProfiledDbConnection(x, ServiceStack.MiniProfiler.Profiler.Current)
                 });
-
-            //Store User Data into the referenced   database
-            //container.Register<IUserAuthRepository>(c =>
-            //    new OrmLiteAuthRepository(c.Resolve<IDbConnectionFactory>())); //Use OrmLite DB Connection to persist the UserAuth and AuthProvider info
-
-            //var authRepo = (OrmLiteAuthRepository)container.Resolve<IUserAuthRepository>(); //If using and RDBMS to persist UserAuth, we must create required tables
-            //if (appSettings.Get("RecreateAuthTables", false))
-            //{
-            //    authRepo.DropAndReCreateTables(); //Drop and re-create all Auth and registration tables
-            //}
-            //else
-            //{
-            //    authRepo.InitSchema();   //Create only the missing tables
-            //}
-
             Plugins.Add(new RequestLogsFeature());
         }
     }

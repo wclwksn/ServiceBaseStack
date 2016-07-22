@@ -56,3 +56,5 @@ H:\git\ServiceBaseStack\ServiceBaseStack\Base.ST\Base.ST\bin\ServiceStack.Text.x
 H:\git\ServiceBaseStack\ServiceBaseStack\Base.ST\Base.ST\obj\Debug\Base.ST.csprojResolveAssemblyReference.cache
 H:\git\ServiceBaseStack\ServiceBaseStack\Base.ST\Base.ST\obj\Debug\Base.ST.dll
 H:\git\ServiceBaseStack\ServiceBaseStack\Base.ST\Base.ST\obj\Debug\Base.ST.pdb
+H:\git\ServiceBaseStack\ServiceBaseStack\Base.ST\Base.ST\bin\Base.ST.DomainModel.dll
+H:\git\ServiceBaseStack\ServiceBaseStack\Base.ST\Base.ST\bin\Base.ST.DomainModel.pdb

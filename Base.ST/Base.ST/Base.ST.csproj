@@ -294,6 +294,10 @@
     <Compile Include="Tool\BaseTools.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Base.ST.DomainModel\Base.ST.DomainModel.csproj">
+      <Project>{89aa9c21-a507-4b6f-866b-735cf66f26d0}</Project>
+      <Name>Base.ST.DomainModel</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Base.ST.ServiceInterface\Base.ST.ServiceInterface.csproj">
       <Project>{573b621e-cc98-4c87-ae9c-6038dbb2907e}</Project>
       <Name>Base.ST.ServiceInterface</Name>
