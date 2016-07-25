@@ -254,7 +254,7 @@
                             <img class="nav-user-photo" src="ace/assets/avatars/user.jpg" alt="Jason's Photo" />
                             <span class="user-info">
                                 <small>欢迎光临,</small>
-                                Jason
+                                <span id="_userName">  Jason</span>
                             </span>
 
                             <i class="icon-caret-down"></i>
@@ -310,7 +310,7 @@
             alert(localStorage.sessionId);
             $.ajax({
                 type:"GET", 
-                url: "hello/nihao?format=json",
+                url: "SmsUser/nihao?format=json",
                 dataType: "json", 
                 complete: function (xhr, status) {
                     if (status === 'error' || !xhr.responseText) {
