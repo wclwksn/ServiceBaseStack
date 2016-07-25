@@ -57,7 +57,7 @@ namespace Base.ST
                 () => new CustomUserSession(),
                 new IAuthProvider[] {             
                     new CustomCredentialsAuthProvider() {  SessionExpiry =TimeSpan.FromMinutes(10)},
-                    new BasicAuthProvider(),                   
+                    new BasicAuthProvider(),           
                     new OpenIdOAuthProvider(appSettings)     
                 }));
 

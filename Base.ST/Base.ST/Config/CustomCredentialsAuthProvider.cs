@@ -30,11 +30,9 @@ namespace Base.ST
                 }
                 var session = (CustomUserSession)authService.GetSession(false);
                 session.UserAuthId = _exUser.userid;
-                session.IsAuthenticated = true; 
-
-                db.ExecuteSql(string.Format("insert  into sms_loginlog values('{0}','{1}','{2}','{3}','{4}','{5}','{6}')", Guid.NewGuid().ToString(), session.CreatedAt.ToLocalTime(), session.Id, session.State, string.Empty, string.Empty, userName));
-                //sms_loginlog _loginLog = new sms_loginlog() { id = Guid.NewGuid().ToString(), createdate = session.CreatedAt.ToLocalTime(), sessionid = session.Id, status = session.State, ipaddress = string.Empty, ipaddressname = string.Empty, username = userName };
-                //db.Insert<sms_loginlog>();
+                session.IsAuthenticated = true;  
+                sms_loginlog _loginLog = new sms_loginlog() { id = Guid.NewGuid().ToString(), createdate = session.CreatedAt.ToLocalTime(), sessionid = session.Id, status = session.State, ipaddress = string.Empty, ipaddressname = string.Empty, username = userName };
+                db.Insert(_loginLog);
             } 
             return true;
         }

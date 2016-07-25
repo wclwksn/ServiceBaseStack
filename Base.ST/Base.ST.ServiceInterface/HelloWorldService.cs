@@ -1,4 +1,5 @@
-﻿using ServiceStack;
+﻿using Base.ST.DomainModel;
+using ServiceStack;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,14 +12,14 @@ namespace Base.ST.ServiceInterface
     {
         public object Get(Hello hello)
         {
-            string _restStr = string.Format("hello {0}!", hello.name); 
+            string _restStr = string.Format("hello {0}!", hello.name);
 
-            return _restStr;
+            return new HelloWorldModel() { name = _restStr, userid = "test" };
         }
     }
     [Authenticate]
     [Route("/hello/{name}", "GET")]
-    public class Hello : IReturn<string>
+    public class Hello : IReturn<HelloWorldModel>
     {
         public string name { get; set; }
     }

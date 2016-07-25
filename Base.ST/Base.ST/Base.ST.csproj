@@ -257,6 +257,7 @@
     <Content Include="ace\typography.html" />
     <Content Include="ace\widgets.html" />
     <Content Include="ace\wysiwyg.html" />
+    <Content Include="Default.html" />
     <Content Include="packages.config">
       <SubType>Designer</SubType>
     </Content>

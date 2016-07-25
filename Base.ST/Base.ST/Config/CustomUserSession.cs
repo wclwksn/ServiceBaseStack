@@ -21,12 +21,12 @@ namespace Base.ST
 
         public override void OnAuthenticated(IServiceBase authService, IAuthSession session, IAuthTokens tokens, Dictionary<string, string> authInfo)
         {
-           // base.OnAuthenticated(authService, session, tokens, authInfo);
-
-            //Populate all matching fields from this session to your own custom User table
+           //base.OnAuthenticated(authService, session, tokens, authInfo); 
+           //Populate all matching fields from this session to your own custom User table
             var user = session.ConvertTo<User>();
-           
-           
+
+            var authToken = session.ProviderOAuthAccess;
+            return;
 
             //foreach (var authToken in session.ProviderOAuthAccess)
             //{
@@ -57,13 +57,6 @@ namespace Base.ST
                 userAuthRepo.AssignRoles(userAuth, roles: new[] { RoleNames.Admin });
             }
 
-            //Resolve the DbFactory from the IOC and persist the user info
-            using (var db = authService.TryResolve<IDbConnectionFactory>().Open())
-            {
-                db.Save(user);
-            }
-        } 
-
-         
+        }
     }
 }

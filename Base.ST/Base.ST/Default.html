@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>主页</title> 
+</head>
+<body>
+
+
+    <!--[if IE]>
+    <script src="ace/assets/js/jquery.min.js"></script>
+    <![endif]-->
+    <!--[if !IE]> -->
+    <script type="text/javascript">
+        window.jQuery || document.write("<script src='ace/assets/js/jquery-1.10.2.min.js'>" + "<" + "/script>");
+    </script>
+    <!-- <![endif]-->
+    <!--[if IE]>
+    <script type="text/javascript">
+     window.jQuery || document.write("<script src='assets/js/jquery-1.10.2.min.js'>"+"<"+"/script>");
+    </script>
+    <![endif]--> 
+    <script type="text/javascript">
+        if ("ontouchend" in document) document.write("<script src='ace/assets/js/jquery.mobile.custom.min.js'>" + "<" + "/script>");
+
+        $(document).ready(function () {
+            alert(localStorage.sessionId);
+            $.ajax({
+                type:"GET", 
+                url: "hello/nihao?format=json",
+                dataType: "json", 
+                success: function (data) {
+                    alert(data.name); 
+                }, 
+                error: function (data) {
+                    alert("获取数据错误！");
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>

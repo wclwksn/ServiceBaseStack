@@ -26,6 +26,7 @@
     <script src="assets/js/html5shiv.js"></script>
     <script src="assets/js/respond.min.js"></script>
     <![endif]-->
+    
 </head> 
 <body class="login-layout">
     <div class="main-container">
@@ -55,14 +56,14 @@
                                             <fieldset>
                                                 <label class="block clearfix">
                                                     <span class="block input-icon input-icon-right">
-                                                        <input type="text" class="form-control" placeholder="用户名" />
+                                                        <input type="text" class="form-control" placeholder="用户名" id="_userName" />
                                                         <i class="icon-user"></i>
                                                     </span>
                                                 </label>
 
                                                 <label class="block clearfix">
                                                     <span class="block input-icon input-icon-right">
-                                                        <input type="password" class="form-control" placeholder="密码" />
+                                                        <input type="password" class="form-control" placeholder="密码"  id="_password"/>
                                                         <i class="icon-lock"></i>
                                                     </span>
                                                 </label> 
@@ -74,7 +75,7 @@
                                                         <span class="lbl">记住</span>
                                                     </label>
 
-                                                    <button type="button" class="width-35 pull-right btn btn-sm btn-primary">
+                                                    <button id="_loginBtn" type="button" class="width-35 pull-right btn btn-sm btn-primary">
                                                         <i class="icon-key"></i>
                                                        登录
                                                     </button>
@@ -245,12 +246,10 @@
     <!--[if IE]>
     <script src="ace/assets/js/jquery.min.js"></script>
     <![endif]-->
-    <!--[if !IE]> -->
-
+    <!--[if !IE]> --> 
     <script type="text/javascript">
         window.jQuery || document.write("<script src='ace/assets/js/jquery-1.10.2.min.js'>" + "<" + "/script>");
-    </script>
-
+    </script>  
     <!-- <![endif]-->
     <!--[if IE]>
     <script type="text/javascript">
@@ -269,8 +268,29 @@
 			 jQuery('.widget-box.visible').removeClass('visible');
 			 jQuery('#'+id).addClass('visible');
 			}
+    </script> 
+    <script type="text/javascript">
+    $(document).ready(function () {
+        $("#_loginBtn").click(function (e) {
+            var _name = $("#_userName").val();
+            var _pwd = $("#_password").val();
+            $.ajax({
+                dataType: "json",
+                url: "auth/credentials?format=json",
+                data: {
+                    "provider": "credentials", "UserName": _name, "Password": _pwd
+                },
+                success: function (data) { 
+                    localStorage.sessionId = data.sessionId;
+                    window.location.href = "Default.html";
+                },
+                error: function (data) {
+                    alert("用户名或密码错误！");
+                }
+            });
+        });
+    });
     </script>
-    <!--<div style="display:none">
-    <script src='http://v7.cnzz.com/stat.php?id=155540&web_id=155540' language='JavaScript' charset='gb2312'></script></div>-->
+
 </body>
 </html>
