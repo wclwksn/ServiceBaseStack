@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>地图窗口</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /> 
+    <script src="ace/assets/js/jquery-1.10.2.min.js"></script>
+    <script src="Script/leaflet/leaflet.js"></script>
+    <link href="Script/leaflet/leaflet.css" rel="stylesheet" /> 
+    <style  type="text/css">
+        #_MainMap { height: 800px; }
+    </style>
+</head>
+<body>
+    <div id="_MainMap">
+
+    </div>
+    
+   
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            var map = L.map('_MainMap', { 
+                maxZoom: 16
+            });
+            map.setView([31.9727,120.88943], 10);
+            L.tileLayer('http://localhost:42938/GetTile/{z}/{x}/{y}', {
+                attribution: '&copy; <a href="http://maps.google.cn/">谷歌地图</a> contributors',
+                tms:true
+            }).addTo(map); 
+             
+            var popup = L.popup();
+
+            function onMapClick(e) {
+                popup
+                    .setLatLng(e.latlng)
+                    .setContent("You clicked the map at " + e.latlng.toString())
+                    .openOn(map);
+            } 
+           
+            map.on('click', onMapClick);
+            //L.marker([31.9836,120.8936]).addTo(map)
+            //    .bindPopup('A pretty CSS3 popup.<br> Easily customizable.')
+            //    .openPopup();
+        });
+    </script>
+</body>
+</html>

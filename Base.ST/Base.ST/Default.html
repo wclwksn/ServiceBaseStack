@@ -33,7 +33,7 @@
                 <a href="#" class="navbar-brand">
                     <small>
                         <i class="icon-leaf"></i>
-                        ACE后台管理系统
+                        系统主页
                     </small>
                 </a><!-- /.brand -->
             </div><!-- /.navbar-header -->
@@ -44,40 +44,34 @@
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                             <i class="icon-tasks"></i>
                             <span class="badge badge-grey">4</span>
-                        </a>
-
+                        </a> 
                         <ul class="pull-right dropdown-navbar dropdown-menu dropdown-caret dropdown-close">
                             <li class="dropdown-header">
                                 <i class="icon-ok"></i>
                                 还有4个任务完成
-                            </li>
-
+                            </li> 
                             <li>
                                 <a href="#">
                                     <div class="clearfix">
                                         <span class="pull-left">软件更新</span>
                                         <span class="pull-right">65%</span>
-                                    </div>
-
+                                    </div> 
                                     <div class="progress progress-mini ">
                                         <div style="width:65%" class="progress-bar "></div>
                                     </div>
                                 </a>
-                            </li>
-
+                            </li> 
                             <li>
                                 <a href="#">
                                     <div class="clearfix">
                                         <span class="pull-left">硬件更新</span>
                                         <span class="pull-right">35%</span>
-                                    </div>
-
+                                    </div> 
                                     <div class="progress progress-mini ">
                                         <div style="width:35%" class="progress-bar progress-bar-danger"></div>
                                     </div>
                                 </a>
-                            </li>
-
+                            </li> 
                             <li>
                                 <a href="#">
                                     <div class="clearfix">
@@ -89,8 +83,7 @@
                                         <div style="width:15%" class="progress-bar progress-bar-warning"></div>
                                     </div>
                                 </a>
-                            </li>
-
+                            </li> 
                             <li>
                                 <a href="#">
                                     <div class="clearfix">
@@ -102,8 +95,7 @@
                                         <div style="width:90%" class="progress-bar progress-bar-success"></div>
                                     </div>
                                 </a>
-                            </li>
-
+                            </li> 
                             <li>
                                 <a href="#">
                                     查看任务详情
@@ -123,8 +115,7 @@
                             <li class="dropdown-header">
                                 <i class="icon-warning-sign"></i>
                                 8条通知
-                            </li>
-
+                            </li> 
                             <li>
                                 <a href="#">
                                     <div class="clearfix">
@@ -135,15 +126,13 @@
                                         <span class="pull-right badge badge-info">+12</span>
                                     </div>
                                 </a>
-                            </li>
-
+                            </li> 
                             <li>
                                 <a href="#">
                                     <i class="btn btn-xs btn-primary icon-user"></i>
                                     切换为编辑登录..
                                 </a>
-                            </li>
-
+                            </li> 
                             <li>
                                 <a href="#">
                                     <div class="clearfix">
@@ -154,8 +143,7 @@
                                         <span class="pull-right badge badge-success">+8</span>
                                     </div>
                                 </a>
-                            </li>
-
+                            </li> 
                             <li>
                                 <a href="#">
                                     <div class="clearfix">
@@ -166,8 +154,7 @@
                                         <span class="pull-right badge badge-info">+11</span>
                                     </div>
                                 </a>
-                            </li>
-
+                            </li> 
                             <li>
                                 <a href="#">
                                     查看所有通知
@@ -175,20 +162,17 @@
                                 </a>
                             </li>
                         </ul>
-                    </li>
-
+                    </li> 
                     <li class="green">
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                             <i class="icon-envelope icon-animated-vertical"></i>
                             <span class="badge badge-success">5</span>
-                        </a>
-
+                        </a> 
                         <ul class="pull-right dropdown-navbar dropdown-menu dropdown-caret dropdown-close">
                             <li class="dropdown-header">
                                 <i class="icon-envelope-alt"></i>
                                 5条消息
-                            </li>
-
+                            </li> 
                             <li>
                                 <a href="#">
                                     <img src="assets/avatars/avatar.png" class="msg-photo" alt="Alex's Avatar" />
@@ -306,23 +290,24 @@
     <script type="text/javascript">
         if ("ontouchend" in document) document.write("<script src='ace/assets/js/jquery.mobile.custom.min.js'>" + "<" + "/script>");
 
-        $(document).ready(function () {
-            alert(localStorage.sessionId);
+        $(document).ready(function () { 
             $.ajax({
                 type:"GET", 
-                url: "SmsUser/nihao?format=json",
+                url: "SmsUser/" + localStorage.userName + "?format=json",
                 dataType: "json", 
                 complete: function (xhr, status) {
                     if (status === 'error' || !xhr.responseText) {
                         if (xhr.status == "401")
                         {
-                            alert("未登陆系统，请从新登陆！");
+                            alert("未登陆系统，请重新登陆！");
                             window.location.href = "Index.html";
                         }
                     }
                     else {
                         var data = xhr.responseText;
-                        alert(data); 
+                        data = $.parseJSON(data);
+                        $("#_userName").text(data.name);
+                        
                     }
                 }
             });

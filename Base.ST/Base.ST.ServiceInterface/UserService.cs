@@ -15,7 +15,10 @@ namespace Base.ST.ServiceInterface
         {
             sms_user _smsUser = new sms_user(); 
             _smsUser = Db.Single<sms_user>(x => x.name == userInfo.name);
-            _smsUser.password = string.Empty;
+            if (_smsUser != null)
+            {
+                _smsUser.password = string.Empty;
+            }
             return _smsUser;
         }
     }

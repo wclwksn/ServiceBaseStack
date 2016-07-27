@@ -258,6 +258,7 @@
     <Content Include="ace\widgets.html" />
     <Content Include="ace\wysiwyg.html" />
     <Content Include="Default.html" />
+    <Content Include="MapLeaflet.html" />
     <Content Include="packages.config">
       <SubType>Designer</SubType>
     </Content>
@@ -275,6 +276,13 @@
   <ItemGroup>
     <Content Include="Global.asax" />
     <Content Include="Index.html" />
+    <Content Include="Script\leaflet\images\layers-2x.png" />
+    <Content Include="Script\leaflet\images\layers.png" />
+    <Content Include="Script\leaflet\images\marker-icon-2x.png" />
+    <Content Include="Script\leaflet\images\marker-icon.png" />
+    <Content Include="Script\leaflet\images\marker-shadow.png" />
+    <Content Include="Script\leaflet\leaflet.css" />
+    <Content Include="Script\leaflet\leaflet.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>

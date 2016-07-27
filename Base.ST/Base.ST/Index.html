@@ -280,9 +280,9 @@
                 data: {
                     "provider": "credentials", "UserName": _name, "Password": _pwd
                 },
-                success: function (data) { 
-                    localStorage.sessionId = data.sessionId;
-                    window.location.href = "Default.html";
+                success: function (data) {  
+                    localStorage.userName = data.userName;
+                    window.location.href = "Default.html"; 
                 },
                 error: function (data) {
                     alert("用户名或密码错误！");
