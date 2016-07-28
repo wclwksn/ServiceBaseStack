@@ -7,42 +7,292 @@
     <script src="ace/assets/js/jquery-1.10.2.min.js"></script>
     <script src="Script/leaflet/leaflet.js"></script>
     <link href="Script/leaflet/leaflet.css" rel="stylesheet" /> 
-    <style  type="text/css">
-        #_MainMap { height: 800px; }
-    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="ace/assets/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="ace/assets/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="ace/assets/css/ace.min.css" />
+    <link rel="stylesheet" href="ace/assets/css/ace-rtl.min.css" />
+    <link rel="stylesheet" href="ace/assets/css/ace-skins.min.css" />
+    <!--[if lte IE 8]>
+          <link rel="stylesheet" href="assets/css/ace-ie.min.css" />
+        <![endif]-->
+    <!-- inline styles related to this page -->
+    <!-- ace settings handler -->
+    <script src="ace/assets/js/ace-extra.min.js"></script>
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="assets/js/html5shiv.js"></script>
+    <script src="assets/js/respond.min.js"></script>
+    <![endif]--> 
+    
 </head>
 <body>
-    <div id="_MainMap">
+    <div class="navbar navbar-default" id="navbar">
+        <script type="text/javascript">
+            try { ace.settings.check('navbar', 'fixed') } catch (e) { }
+        </script>
 
+        <div class="navbar-container" id="navbar-container">
+            <div class="navbar-header pull-left">
+                <a href="#" class="navbar-brand">
+                    <small>
+                        <i class="icon-leaf"></i>
+                        二维地图系统
+                    </small>
+                </a><!-- /.brand -->
+            </div><!-- /.navbar-header --> 
+            <div class="navbar-header pull-right" role="navigation">
+                <ul class="nav ace-nav"> 
+                    <li class="purple">
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                            <i class="icon-bell-alt icon-animated-bell" ></i>
+                            <span class="badge badge-important">企业位置</span>
+                        </a> 
+                         
+                        <ul class="pull-right dropdown-navbar navbar-pink dropdown-menu dropdown-caret ">
+                            <li class="dropdown-header">
+                                <i class="icon-warning-sign"></i>
+                                企业位置标注
+                            </li> 
+                            <li>
+                                <a href="#">
+                                    <i class="btn btn-xs btn-primary icon-user"></i>
+                                    切换为编辑登录..
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <div class="clearfix">
+                                        <span class="pull-left">
+                                            <i class="btn btn-xs no-hover btn-success icon-shopping-cart"></i>
+                                            新订单
+                                        </span>
+                                        <span class="pull-right badge badge-success">+8</span>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <div class="clearfix">
+                                        <span class="pull-left">
+                                            <i class="btn btn-xs no-hover btn-info icon-twitter"></i>
+                                            粉丝
+                                        </span>
+                                        <span class="pull-right badge badge-info">+11</span>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul> 
+                   </li>
+                    <li class="green">
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                            <i class="icon-envelope icon-animated-vertical"></i>
+                            <span class="badge badge-success">5</span>
+                        </a>
+                        <ul class="pull-right dropdown-navbar dropdown-menu dropdown-caret">
+                            <li class="dropdown-header">
+                                <i class="icon-envelope-alt"></i>
+                                5条消息
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <img src="assets/avatars/avatar.png" class="msg-photo" alt="Alex's Avatar" />
+                                    <span class="msg-body">
+                                        <span class="msg-title">
+                                            <span class="blue">Alex:</span>
+                                            不知道写啥 ...
+                                        </span>
+
+                                        <span class="msg-time">
+                                            <i class="icon-time"></i>
+                                            <span>1分钟以前</span>
+                                        </span>
+                                    </span>
+                                </a>
+                            </li> 
+                            <li>
+                                <a href="#">
+                                    <img src="assets/avatars/avatar3.png" class="msg-photo" alt="Susan's Avatar" />
+                                    <span class="msg-body">
+                                        <span class="msg-title">
+                                            <span class="blue">Susan:</span>
+                                            不知道翻译...
+                                        </span>
+
+                                        <span class="msg-time">
+                                            <i class="icon-time"></i>
+                                            <span>20分钟以前</span>
+                                        </span>
+                                    </span>
+                                </a>
+                            </li> 
+                            <li>
+                                <a href="#">
+                                    <img src="assets/avatars/avatar4.png" class="msg-photo" alt="Bob's Avatar" />
+                                    <span class="msg-body">
+                                        <span class="msg-title">
+                                            <span class="blue">Bob:</span>
+                                            到底是不是英文 ...
+                                        </span>
+
+                                        <span class="msg-time">
+                                            <i class="icon-time"></i>
+                                            <span>下午3:15</span>
+                                        </span>
+                                    </span>
+                                </a>
+                            </li> 
+                            <li>
+                                <a href="inbox.html">
+                                    查看所有消息
+                                    <i class="icon-arrow-right"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="light-blue">
+                        <a data-toggle="dropdown" href="#" class="dropdown-toggle">
+                            <img class="nav-user-photo" src="ace/assets/avatars/user.jpg" alt="Jason's Photo" />
+                            <span class="user-info">
+                                <small>欢迎光临,</small>
+                                <span id="_userName">  Jason</span>
+                            </span> 
+                            <i class="icon-caret-down"></i>
+                        </a>
+
+                        <ul class="user-menu pull-right dropdown-menu dropdown-yellow dropdown-caret">
+                           
+                            <li>
+                                <a href="#">
+                                    <i class="icon-user"></i>
+                                    个人资料
+                                </a>
+                            </li>
+
+                            <li class="divider"></li>
+
+                            <li>
+                                <a href="#">
+                                    <i class="icon-off"></i>
+                                    退出
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul><!-- /.ace-nav -->
+            </div><!-- /.navbar-header -->
+        </div><!-- /.container -->
     </div>
-    
+    <div id="_MainMap"> 
+    </div>   
+
    
-    <script type="text/javascript">
+        <!--[if !IE]> -->
+        <script src="ace/assets/js/jquery-2.0.3.min.js"></script>
+        <!-- <![endif]-->
+        <!--[if IE]>
+        <script src="assets/js/jquery-1.10.2.min.js"></script>
+        <![endif]-->
+        <!--[if !IE]> -->
+        <script type="text/javascript">
+            window.jQuery || document.write("<script src='ace/assets/js/jquery-2.0.3.min.js'>" + "<" + "script>");
+        </script>
+        <!-- <![endif]-->
+        <!--[if IE]>
+        <script type="text/javascript">
+         window.jQuery || document.write("<script src='assets/js/jquery-1.10.2.min.js'>"+"<"+"script>");
+        </script>
+        <![endif]-->
+        <script type="text/javascript">
+            if ("ontouchend" in document) document.write("<script src='ace/assets/js/jquery.mobile.custom.min.js'>" + "<" + "script>");
+        </script>
+        <script src="ace/assets/js/bootstrap.min.js"></script>
+        <script src="ace/assets/js/typeahead-bs2.min.js"></script>
+        <!-- page specific plugin scripts -->
+        <!--[if lte IE 8]>
+          <script src="assets/js/excanvas.min.js"></script>
+        <![endif]-->
+        <script src="ace/assets/js/jquery-ui-1.10.3.custom.min.js"></script>
+        <script src="ace/assets/js/jquery.ui.touch-punch.min.js"></script>
+        <script src="ace/assets/js/jquery.slimscroll.min.js"></script>
+        <script src="ace/assets/js/jquery.easy-pie-chart.min.js"></script>
+        <script src="ace/assets/js/jquery.sparkline.min.js"></script>
+        <script src="ace/assets/js/flot/jquery.flot.min.js"></script>
+        <script src="ace/assets/js/flot/jquery.flot.pie.min.js"></script>
+        <script src="ace/assets/js/flot/jquery.flot.resize.min.js"></script>
+        <script src="ace/assets/js/ace-elements.min.js"></script>
+        <script src="ace/assets/js/ace.min.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                 $('.widget-container-span').sortable({
+			        connectWith: '.widget-container-span',
+					items:'> .widget-box',
+					opacity:0.8,
+					revert:true,
+					forceHelperSize:true,
+					placeholder: 'widget-placeholder',
+					forcePlaceholderSize:true,
+					tolerance:'pointer'
+			    });
 
-        $(document).ready(function () {
-            var map = L.map('_MainMap', { 
-                maxZoom: 16
+                $("#_MainMap").height($(document).height() - $("#navbar").height());
+                map = L.map('_MainMap', {
+                    maxZoom: 16
+                });
+                map.setView([31.9727, 120.88943], 10);
+                L.tileLayer('http://localhost:42938/GetTile/{z}/{x}/{y}', {
+                    attribution: '&copy; <a href="http://maps.google.cn/">谷歌地图</a> contributors',
+                    tms: true
+                }).addTo(map);
+
+                var popup = L.popup();
+                function onMapClick(e) {
+                    popup.setLatLng(e.latlng)
+                        .setContent("You clicked the map at " + e.latlng.toString())
+                        .openOn(map);
+                }
+
+                map.on('click', onMapClick);
+                L.marker([31.9727, 120.88943]).addTo(map)
+                    .bindPopup('A pretty CSS3 popup.<br> Easily customizable.')
+                    .openPopup();
+
+                var polygon = L.polygon([
+               [31.9737, 120.88943],
+          [31.9726, 120.88941],
+        [31.9825, 120.88731]
+                ]).addTo(map);
             });
-            map.setView([31.9727,120.88943], 10);
-            L.tileLayer('http://localhost:42938/GetTile/{z}/{x}/{y}', {
-                attribution: '&copy; <a href="http://maps.google.cn/">谷歌地图</a> contributors',
-                tms:true
-            }).addTo(map); 
-             
-            var popup = L.popup();
+            $(document).resize(function () {
+                $("#_MainMap").height($(document).height() - $("#navbar").height());
+            });
+        </script>
+    <div class="widget-container-span" style=" position:absolute; left:10px; top:50px;z-index:1999;">
+        <div class="widget-box">
+            <div class="widget-header widget-header-small header-color-dark">
+                <h6 class="smaller">With Labels & Badges</h6>
 
-            function onMapClick(e) {
-                popup
-                    .setLatLng(e.latlng)
-                    .setContent("You clicked the map at " + e.latlng.toString())
-                    .openOn(map);
-            } 
-           
-            map.on('click', onMapClick);
-            //L.marker([31.9836,120.8936]).addTo(map)
-            //    .bindPopup('A pretty CSS3 popup.<br> Easily customizable.')
-            //    .openPopup();
-        });
-    </script>
+                <div class="widget-toolbar no-border">
+                    <label>
+                        <input type="checkbox" class="ace ace-switch ace-switch-3" />
+                        <span class="lbl"></span>
+                    </label>
+                </div>
+
+                <div class="widget-toolbar">
+                    <span class="badge badge-info">info</span>
+                </div>
+            </div>
+
+            <div class="widget-body">
+                <div class="widget-main">
+                    <div class="alert alert-info">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

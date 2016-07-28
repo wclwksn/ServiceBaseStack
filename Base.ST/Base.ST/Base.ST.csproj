@@ -283,6 +283,7 @@
     <Content Include="Script\leaflet\images\marker-shadow.png" />
     <Content Include="Script\leaflet\leaflet.css" />
     <Content Include="Script\leaflet\leaflet.js" />
+    <Content Include="Script\MapLeaflet\MapControls.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>

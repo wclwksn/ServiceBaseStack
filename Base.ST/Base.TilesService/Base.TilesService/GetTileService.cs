@@ -15,14 +15,18 @@ namespace Base.TilesService
         [AddHeader(ContentType = "image/png")]
         public Stream Get(tileInfo _tileInfo)
         {
-               Stream stream = new MemoryStream();
+              // Stream stream = new MemoryStream();
                tiles _singleTile = Db.Single<tiles>(parm => parm.zoom_level == _tileInfo.z && parm.tile_column == _tileInfo.x && parm.tile_row == _tileInfo.y);
                if (_singleTile != null)
                {
-                   stream = new MemoryStream(_singleTile.tile_data);
+                   Stream stream = new MemoryStream(_singleTile.tile_data);
+                   return stream;
+               }
+               else {
+                   return null;
                }
 
-               return stream;
+             
         }
     } 
 
