@@ -6,8 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /> 
     <script src="ace/assets/js/jquery-1.10.2.min.js"></script>
     <script src="Script/leaflet/leaflet.js"></script>
-    <link href="Script/leaflet/leaflet.css" rel="stylesheet" /> 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="Script/leaflet/leaflet.css" rel="stylesheet" />  
     <link href="ace/assets/css/bootstrap.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="ace/assets/css/font-awesome.min.css" />
     <link rel="stylesheet" href="ace/assets/css/ace.min.css" />
@@ -23,8 +22,7 @@
     <!--[if lt IE 9]>
     <script src="assets/js/html5shiv.js"></script>
     <script src="assets/js/respond.min.js"></script>
-    <![endif]--> 
-    
+    <![endif]-->  
 </head>
 <body>
     <div class="navbar navbar-default" id="navbar">
@@ -185,9 +183,7 @@
         </div><!-- /.container -->
     </div>
     <div id="_MainMap"> 
-    </div>   
-
-   
+    </div>    
         <!--[if !IE]> -->
         <script src="ace/assets/js/jquery-2.0.3.min.js"></script>
         <!-- <![endif]-->
@@ -268,25 +264,22 @@
                 $("#_MainMap").height($(document).height() - $("#navbar").height());
             });
         </script>
-    <div class="widget-container-span" style=" position:absolute; left:10px; top:50px;z-index:1999;">
+    <div class="widget-container-span " style=" position:absolute; right:10px; top:50px;z-index:999;width:240px; ">
         <div class="widget-box">
             <div class="widget-header widget-header-small header-color-dark">
-                <h6 class="smaller">With Labels & Badges</h6>
-
+                <h6 class="smaller">功能窗口</h6> 
                 <div class="widget-toolbar no-border">
-                    <label>
-                        <input type="checkbox" class="ace ace-switch ace-switch-3" />
+                    <label> 
                         <span class="lbl"></span>
                     </label>
-                </div>
-
+                </div> 
                 <div class="widget-toolbar">
-                    <span class="badge badge-info">info</span>
+                    <span class="badge badge-info">关闭</span>
                 </div>
             </div>
 
             <div class="widget-body">
-                <div class="widget-main">
+                <div class="widget-main">  
                     <div class="alert alert-info">
                         Lorem ipsum dolor sit amet, consectetur adipiscing.
                     </div>
