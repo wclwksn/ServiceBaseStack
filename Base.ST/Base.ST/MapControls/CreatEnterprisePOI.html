@@ -28,20 +28,25 @@
         <div class="space-4"></div>
                         <div class="form-group">
                            <label class=" control-label no-padding-right" for="form-field-1">名称：</label>
-                           <input type="text" id="form-field-1" placeholder="名称" class="col-xs-10 col-sm-5" />
+                           <input type="text" id="_enName" placeholder="名称"  />
                         </div> 
         <div class="space-4"></div>
         <div class="form-group">
             <label class="control-label no-padding-right" for="form-field-1">地址：</label>
-            <input type="text" id="form-field-1" placeholder="名称" class="col-xs-10 col-sm-5" />
+            <textarea class="form-control" id="form-field-8" placeholder="请输入地址..."></textarea>
         </div> 
         <div class="space-4"></div>
         <div class="form-group">
             <label class="control-label no-padding-right" for="form-field-1">描述：</label>
-            <input type="text" id="form-field-1" placeholder="名称" class="col-xs-10 col-sm-5" />
+            <textarea class="form-control" id="form-field-8" placeholder="请输入描述..."></textarea>
         </div> 
-      </div>
-          
+        <div class="space-4"></div>
+        <div class="form-group">
+            <button type="button" id="_createBtn"  class="btn btn-sm btn-success">
+               创建
+            </button>
+        </div>
+      </div> 
 
     <!--[if !IE]> -->
     <script src="../ace/assets/js/jquery-2.0.3.min.js"></script>
@@ -78,5 +83,23 @@
     <script src="../ace/assets/js/flot/jquery.flot.resize.min.js"></script>
     <script src="../ace/assets/js/ace-elements.min.js"></script>
     <script src="../ace/assets/js/ace.min.js"></script>
+    <script  type="text/javascript">
+        $(document).ready(function () { 
+            $("#_createBtn").click(function (e) {
+                parent.map.on('click', MapLeftClick); 
+            });
+        });
+
+        function MapLeftClick(e)
+        {
+            parent.map.off('click', MapLeftClick);
+            var _name = $("#_enName").val();
+            if (_name != null) {
+                L.marker(e.latlng).addTo(parent.map).bindPopup("A pretty CSS3 popup.<br> Easily customizable.");
+               
+            }
+        }
+
+    </script>
 </body>
 </html>
