@@ -19,7 +19,7 @@ namespace Base.TilesService
         public override void Configure(Container container)
         {
             container.Register<IDbConnectionFactory>(c =>
-                new OrmLiteConnectionFactory(@"E:\maptile\nantongallmap.mbtiles", SqliteDialect.Provider));
+                new OrmLiteConnectionFactory(@"D:\Program Files\ArcTiler\Desktop\4.7\Output\nantongrastermap_瓦片包：MBTiles\nantongrastermap.mbtiles", SqliteDialect.Provider));
             container.RegisterAs<OrmLiteCacheClient, ICacheClient>();
             container.Resolve<ICacheClient>().InitSchema();
 
