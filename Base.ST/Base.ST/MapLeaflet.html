@@ -41,45 +41,29 @@
             </div><!-- /.navbar-header --> 
             <div class="navbar-header pull-right" role="navigation">
                 <ul class="nav ace-nav"> 
-                    <li class="purple">
-                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                            <i class="icon-bell-alt icon-animated-bell" ></i>
-                            <span class="badge badge-important">企业位置</span>
-                        </a> 
-                         
-                        <ul class="pull-right dropdown-navbar navbar-pink dropdown-menu dropdown-caret ">
-                            <li class="dropdown-header">
-                                <i class="icon-warning-sign"></i>
-                                企业位置标注
+                    <li class="blue">
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="#"> 
+                            <span class="badge badge-important">地图标绘</span>
+                        </a>  
+                        <ul class="pull-right dropdown-navbar navbar-pink dropdown-menu">
+                            <li> 
+                                <a href="#">
+                                    <i class="btn btn-xs btn-primary icon-user"></i>
+                                    企业位置标绘
+                                </a>
                             </li> 
                             <li>
                                 <a href="#">
                                     <i class="btn btn-xs btn-primary icon-user"></i>
-                                    切换为编辑登录..
+                                    视频监控标绘
                                 </a>
-                            </li>
-                            <li>
+                            </li> 
+                            <li  >
                                 <a href="#">
-                                    <div class="clearfix">
-                                        <span class="pull-left">
-                                            <i class="btn btn-xs no-hover btn-success icon-shopping-cart"></i>
-                                            新订单
-                                        </span>
-                                        <span class="pull-right badge badge-success">+8</span>
-                                    </div>
+                                    <i class="btn btn-xs btn-primary icon-user"></i>
+                                    企业轮廓标绘
                                 </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <div class="clearfix">
-                                        <span class="pull-left">
-                                            <i class="btn btn-xs no-hover btn-info icon-twitter"></i>
-                                            粉丝
-                                        </span>
-                                        <span class="pull-right badge badge-info">+11</span>
-                                    </div>
-                                </a>
-                            </li>
+                            </li> 
                         </ul> 
                    </li>
                     <li class="green">
@@ -253,19 +237,18 @@
                 }
 
                 map.on('click', onMapClick);
-              
+
                 var polygon = L.polygon([
                [31.9737, 120.88943],
           [31.9726, 120.88941],
         [31.9825, 120.88731]
                 ]).addTo(map);
 
-                $("#_funDiv").load("MapControls/CreatEnterprisePOI.html");
+                $("#_funDiv").load("MapControls/CreatEnterpriseBounds.html");
             });
             $(document).resize(function () {
                 $("#_MainMap").height($(document).height() - $("#navbar").height());
-            });
-
+            }); 
             
         </script>
     <div class="widget-container-span " style="position:absolute; right:10px; top:50px;z-index:999;width:320px;   ">

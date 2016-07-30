@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>企业轮廓</title> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /> 
+    <style type="text/css">
+        .createGroup {
+         margin-left:18px;
+        }
+    </style>
+</head>
+<body >
+    <div  >&nbsp;</div>
+    <div class="createGroup">
+        <label class="control-label no-padding-right" for="form-field-1">名称：</label>
+        <input type="text" id="_enName" placeholder="名称" />
+    </div>
+        <div class="space-4"></div>
+    <div class="createGroup">
+        <label class="control-label no-padding-right" for="form-field-1">地址：</label>
+        <textarea class="" id="form-field-8" placeholder="请输入地址..."></textarea>
+    </div>
+        <div class="space-4"></div>
+    <div class="createGroup">
+        <label class="control-label no-padding-right" for="form-field-1">描述：</label>
+        <textarea class="" id="form-field-8" placeholder="请输入描述..."></textarea>
+    </div>
+        <div class="space-4"></div>
+    <div class="createGroup"  >
+        <button type="button" id="_createBtn" class="btn btn-sm btn-success">
+            创建
+        </button>
+        <button type="button" id="_closeBtn" class="btn btn-sm btn-success">
+            关闭
+        </button>
+    </div>
+    
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#_createBtn").click(function (e) {
+                map.on('click', MapLeftClick);
+                map.on("dblclick", MapDoubleClick);
+            });
+        });
+
+        function MapDoubleClick(e)
+        {
+            L.circleMarker(e.latlng, {
+                radius: 2
+            }).addTo(map);
+            alert("doubleClick");
+        }
+
+        function MapLeftClick(e) { 
+            var _name = $("#_enName").val(); 
+            if (_name != "") {
+                map.off('click', MapLeftClick);
+                L.marker(e.latlng).addTo(map).bindPopup(_name);
+
+            }
+        }
+
+    </script>
+</body>
+
+</html>
