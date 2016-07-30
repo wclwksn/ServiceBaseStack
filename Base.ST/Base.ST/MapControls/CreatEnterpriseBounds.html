@@ -41,24 +41,29 @@
             $("#_createBtn").click(function (e) {
                 map.on('click', MapLeftClick);
                 map.on("dblclick", MapDoubleClick);
+                _polygon = L.polygon(_pointArr, {
+                    color: 'red',
+                    fillColor: '#f03',
+                    fillOpacity: 0.5
+                });
+                _polygon.addTo(map);
             });
         });
-
+        var _polygon = null;
+        var _pointArr = new Array();
         function MapDoubleClick(e)
         {
-            L.circleMarker(e.latlng, {
-                radius: 2
-            }).addTo(map);
+            map.off('click', MapLeftClick);
+            map.off("dblclick", MapDoubleClick);
             alert("doubleClick");
         }
 
-        function MapLeftClick(e) { 
-            var _name = $("#_enName").val(); 
-            if (_name != "") {
-                map.off('click', MapLeftClick);
-                L.marker(e.latlng).addTo(map).bindPopup(_name);
-
-            }
+        function MapLeftClick(e) {
+            L.circleMarker(e.latlng, {
+                radius: 2,
+                color: 'red'
+            }).addTo(map);
+            _polygon.addLatLng(e.latlng);
         }
 
     </script>
