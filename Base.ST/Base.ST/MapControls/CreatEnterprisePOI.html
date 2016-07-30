@@ -3,103 +3,55 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>企业标注</title> 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="../ace/assets/js/jquery-1.10.2.min.js"></script>
-    <script src="../Script/leaflet/leaflet.js"></script>
-    <link href="../Script/leaflet/leaflet.css" rel="stylesheet" />  
-    <link rel="stylesheet" href="../ace/assets/css/font-awesome.min.css" />
-    <link rel="stylesheet" href="../ace/assets/css/ace.min.css" />
-    <link rel="stylesheet" href="../ace/assets/css/ace-rtl.min.css" />
-    <link rel="stylesheet" href="../ace/assets/css/ace-skins.min.css" />
-    <!--[if lte IE 8]>
-          <link rel="stylesheet" href="assets/css/ace-ie.min.css" />
-        <![endif]-->
-    <!-- inline styles related to this page -->
-    <!-- ace settings handler -->
-    <script src="../ace/assets/js/ace-extra.min.js"></script>
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-    <script src="assets/js/html5shiv.js"></script>
-    <script src="assets/js/respond.min.js"></script>
-    <![endif]--> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /> 
+    <style type="text/css">
+        .createGroup {
+         margin-left:18px;
+        }
+    </style>
 </head>
-<body>
-    <div class="main-content">  
+<body >
+    <div  >&nbsp;</div>
+    <div class="createGroup">
+        <label class="control-label no-padding-right" for="form-field-1">名称：</label>
+        <input type="text" id="_enName" placeholder="名称" />
+    </div>
         <div class="space-4"></div>
-                        <div class="form-group">
-                           <label class=" control-label no-padding-right" for="form-field-1">名称：</label>
-                           <input type="text" id="_enName" placeholder="名称"  />
-                        </div> 
+    <div class="createGroup">
+        <label class="control-label no-padding-right" for="form-field-1">地址：</label>
+        <textarea class="" id="form-field-8" placeholder="请输入地址..."></textarea>
+    </div>
         <div class="space-4"></div>
-        <div class="form-group">
-            <label class="control-label no-padding-right" for="form-field-1">地址：</label>
-            <textarea class="form-control" id="form-field-8" placeholder="请输入地址..."></textarea>
-        </div> 
+    <div class="createGroup">
+        <label class="control-label no-padding-right" for="form-field-1">描述：</label>
+        <textarea class="" id="form-field-8" placeholder="请输入描述..."></textarea>
+    </div>
         <div class="space-4"></div>
-        <div class="form-group">
-            <label class="control-label no-padding-right" for="form-field-1">描述：</label>
-            <textarea class="form-control" id="form-field-8" placeholder="请输入描述..."></textarea>
-        </div> 
-        <div class="space-4"></div>
-        <div class="form-group">
-            <button type="button" id="_createBtn"  class="btn btn-sm btn-success">
-               创建
-            </button>
-        </div>
-      </div> 
-
-    <!--[if !IE]> -->
-    <script src="../ace/assets/js/jquery-2.0.3.min.js"></script>
-    <!-- <![endif]-->
-    <!--[if IE]>
-    <script src="assets/js/jquery-1.10.2.min.js"></script>
-    <![endif]-->
-    <!--[if !IE]> -->
+    <div class="createGroup"  >
+        <button type="button" id="_createBtn" class="btn btn-sm btn-success">
+            创建
+        </button>
+        <button type="button" id="_closeBtn" class="btn btn-sm btn-success">
+            关闭
+        </button>
+    </div>
+    
     <script type="text/javascript">
-        window.jQuery || document.write("<script src='../ace/assets/js/jquery-2.0.3.min.js'>" + "<" + "script>");
-    </script>
-    <!-- <![endif]-->
-    <!--[if IE]>
-    <script type="text/javascript">
-     window.jQuery || document.write("<script src='../assets/js/jquery-1.10.2.min.js'>"+"<"+"script>");
-    </script>
-    <![endif]-->
-    <script type="text/javascript">
-        if ("ontouchend" in document) document.write("<script src='../ace/assets/js/jquery.mobile.custom.min.js'>" + "<" + "script>");
-    </script>
-    <script src="../ace/assets/js/bootstrap.min.js"></script>
-    <script src="../ace/assets/js/typeahead-bs2.min.js"></script>
-    <!-- page specific plugin scripts -->
-    <!--[if lte IE 8]>
-      <script src="assets/js/excanvas.min.js"></script>
-    <![endif]-->
-    <script src="../ace/assets/js/jquery-ui-1.10.3.custom.min.js"></script>
-    <script src="../ace/assets/js/jquery.ui.touch-punch.min.js"></script>
-    <script src="../ace/assets/js/jquery.slimscroll.min.js"></script>
-    <script src="../ace/assets/js/jquery.easy-pie-chart.min.js"></script>
-    <script src="../ace/assets/js/jquery.sparkline.min.js"></script>
-    <script src="../ace/assets/js/flot/jquery.flot.min.js"></script>
-    <script src="../ace/assets/js/flot/jquery.flot.pie.min.js"></script>
-    <script src="../ace/assets/js/flot/jquery.flot.resize.min.js"></script>
-    <script src="../ace/assets/js/ace-elements.min.js"></script>
-    <script src="../ace/assets/js/ace.min.js"></script>
-    <script  type="text/javascript">
-        $(document).ready(function () { 
+        $(document).ready(function () {
             $("#_createBtn").click(function (e) {
-                parent.map.on('click', MapLeftClick); 
+                map.on('click', MapLeftClick);
             });
         });
 
-        function MapLeftClick(e)
-        {
-            parent.map.off('click', MapLeftClick);
-            var _name = $("#_enName").val();
-            if (_name != null) {
-                L.marker(e.latlng).addTo(parent.map).bindPopup("A pretty CSS3 popup.<br> Easily customizable.");
-               
+        function MapLeftClick(e) { 
+            var _name = $("#_enName").val(); 
+            if (_name != "") {
+                map.off('click', MapLeftClick);
+                L.marker(e.latlng).addTo(parent.map).bindPopup(_name);
+
             }
         }
-
     </script>
 </body>
+
 </html>
