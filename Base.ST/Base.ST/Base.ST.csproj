@@ -258,6 +258,8 @@
     <Content Include="ace\widgets.html" />
     <Content Include="ace\wysiwyg.html" />
     <Content Include="Default.html" />
+    <Content Include="images\point_11.png" />
+    <Content Include="images\point_13.png" />
     <Content Include="MapControls\CarGPSPosition.html" />
     <Content Include="MapControls\CreatEnterpriseBounds.html" />
     <Content Include="MapControls\CreatEnterprisePOI.html" />

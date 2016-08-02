@@ -201,7 +201,8 @@
         <script src="ace/assets/js/flot/jquery.flot.min.js"></script>
         <script src="ace/assets/js/flot/jquery.flot.pie.min.js"></script>
         <script src="ace/assets/js/flot/jquery.flot.resize.min.js"></script>
-        <script src="ace/assets/js/ace-elements.min.js"></script>
+        <script src="ace/assets/js/ace-elements.min.js"></script> 
+        <script src="ace/assets/js/fuelux/fuelux.tree.min.js"></script>
         <script src="ace/assets/js/ace.min.js"></script>
         <script type="text/javascript">
             $(document).ready(function () {
@@ -238,13 +239,7 @@
 
                 map.on('click', onMapClick);
 
-                var polygon = L.polygon([
-               [31.9737, 120.88943],
-          [31.9726, 120.88941],
-        [31.9825, 120.88731]
-                ]).addTo(map);
-
-                $("#_funDiv").load("MapControls/CreatEnterpriseBounds.html");
+                $("#_funDiv").load("MapControls/CarGPSPosition.html");
             });
             $(document).resize(function () {
                 $("#_MainMap").height($(document).height() - $("#navbar").height());
