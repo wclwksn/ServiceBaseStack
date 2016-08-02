@@ -76,16 +76,13 @@
 
             $('#tree1').ace_tree({
                 dataSource: treeDataSource,
-                multiSelect: true,
+                multiSelect: false,
                 loadingHTML: '<div class="tree-loading"><i class="icon-refresh icon-spin blue"></i></div>',
                 'open-icon': 'icon-folder-open',
                 'close-icon': 'icon-folder-close',
-                'selectable': false,
-                'selected-icon': null,
-                'unselected-icon': null
+                'selectable': false
             });
-
-           
+        
             _carLst = new Array();
             var myIcon = L.icon({
                 iconUrl: 'images/point_11.png',
